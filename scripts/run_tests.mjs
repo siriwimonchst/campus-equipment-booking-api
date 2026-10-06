@@ -82,7 +82,7 @@ async function run() {
     '/bookings',
     {
       equipmentId: 'eq-1',
-      borrowerName: 'Somsak Rakเรียน',
+      borrowerName: 'Somsak Rakrian',
       startAt: '2026-10-20T10:00:00.000Z',
       endAt: '2026-10-20T12:00:00.000Z',
       purpose: 'Club meeting'
