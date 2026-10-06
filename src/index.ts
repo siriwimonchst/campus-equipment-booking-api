@@ -4,13 +4,38 @@ type Bindings = {
   DB: D1Database
 }
 
-const app = new Hono<{ Bindings: Bindings }>().basePath('/api')
+const app = new Hono<{ Bindings: Bindings }>()
 
-app.notFound((c) => {
+// Root landing page
+app.get('/', (c) => {
+  return c.json({
+    message: "Welcome to Campus Equipment Booking API",
+    status: "online",
+    endpoints: {
+      equipment: "/api/equipment",
+      bookings: "/api/bookings"
+    }
+  })
+})
+
+const api = app.basePath('/api')
+
+api.get('/', (c) => {
+  return c.json({
+    message: "Campus Equipment Booking API v1",
+    status: "online",
+    endpoints: {
+      equipment: "/api/equipment",
+      bookings: "/api/bookings"
+    }
+  })
+})
+
+api.notFound((c) => {
   return c.json({ error: 'Endpoint or resource not found' }, 404)
 })
 
-app.onError((err, c) => {
+api.onError((err, c) => {
   return c.json({ error: err.message || 'Internal Server Error' }, 500)
 })
 
@@ -19,17 +44,17 @@ function generateId() {
   return crypto.randomUUID()
 }
 
-app.get('/equipment', async (c) => {
+api.get('/equipment', async (c) => {
   const { results } = await c.env.DB.prepare('SELECT * FROM equipment').all()
   return c.json(results)
 })
 
-app.get('/bookings', async (c) => {
+api.get('/bookings', async (c) => {
   const { results } = await c.env.DB.prepare('SELECT * FROM bookings').all()
   return c.json(results)
 })
 
-app.get('/bookings/:id', async (c) => {
+api.get('/bookings/:id', async (c) => {
   const id = c.req.param('id')
   const booking = await c.env.DB.prepare('SELECT * FROM bookings WHERE id = ?').bind(id).first()
   
@@ -40,7 +65,7 @@ app.get('/bookings/:id', async (c) => {
   return c.json(booking)
 })
 
-app.post('/bookings', async (c) => {
+api.post('/bookings', async (c) => {
   let body: any
   try {
     body = await c.req.json()
@@ -93,7 +118,7 @@ app.post('/bookings', async (c) => {
   return c.json(newBooking, 201)
 })
 
-app.patch('/bookings/:id', async (c) => {
+api.patch('/bookings/:id', async (c) => {
   const id = c.req.param('id')
   let body: any
   try {
@@ -161,7 +186,7 @@ app.patch('/bookings/:id', async (c) => {
   return c.json(updatedBooking, 200)
 })
 
-app.delete('/bookings/:id', async (c) => {
+api.delete('/bookings/:id', async (c) => {
   const id = c.req.param('id')
   const booking = await c.env.DB.prepare('SELECT * FROM bookings WHERE id = ?').bind(id).first()
   
