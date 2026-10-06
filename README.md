@@ -24,7 +24,9 @@ npm run db:init
 npm run dev
 ```
 
-The API will run at `http://localhost:8787/api`.
+## 🌐 Base API URLs
+- **Production (Live Cloudflare Workers)**: `https://campus-equipment-booking-api.siriwimonchst.workers.dev/api`
+- **Local Development**: `http://localhost:8787/api`
 
 ## 📁 Required Submission Documents
 

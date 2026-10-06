@@ -1,7 +1,7 @@
 # Test Evidence Report
 
-**Base API URL**: `http://127.0.0.1:8787/api`  
-**Test Date**: 2026-10-06T06:46:40.422Z  
+**Base API URL**: `https://campus-equipment-booking-api.siriwimonchst.workers.dev/api`  
+**Test Date**: 2026-10-06T07:22:46.197Z  
 **Total Test Cases**: 13  
 **Passed**: 13 / 13
 
@@ -16,19 +16,19 @@
 | 5 | Case 5: Create booking with non-existent equipmentId (Bad Request) | `POST` | `/bookings` | `400` | `400` | ✅ PASS |
 | 6 | Case 6: Create second non-overlapping booking for eq-1 (Success) | `POST` | `/bookings` | `201` | `201` | ✅ PASS |
 | 7 | Case 7: List all bookings | `GET` | `/bookings` | `200` | `200` | ✅ PASS |
-| 8 | Case 8: Get booking by ID (9422c66a-295d-4276-a662-392b6252ef27) | `GET` | `/bookings/9422c66a-295d-4276-a662-392b6252ef27` | `200` | `200` | ✅ PASS |
+| 8 | Case 8: Get booking by ID (066ccb6e-3e3e-4bb1-94db-abaa57300dae) | `GET` | `/bookings/066ccb6e-3e3e-4bb1-94db-abaa57300dae` | `200` | `200` | ✅ PASS |
 | 9 | Case 9: Get booking with non-existent ID (Not Found) | `GET` | `/bookings/non-existent-id` | `404` | `404` | ✅ PASS |
-| 10 | Case 10: Update booking purpose (Success) | `PATCH` | `/bookings/9422c66a-295d-4276-a662-392b6252ef27` | `200` | `200` | ✅ PASS |
-| 11 | Case 11: Update booking time to conflict with another booking (Conflict) | `PATCH` | `/bookings/d8beb812-48f8-46f8-b4cd-6c718c0784f5` | `409` | `409` | ✅ PASS |
-| 12 | Case 12: Delete booking by ID (Success) | `DELETE` | `/bookings/9422c66a-295d-4276-a662-392b6252ef27` | `204` | `204` | ✅ PASS |
-| 13 | Case 13: Get deleted booking (Not Found) | `GET` | `/bookings/9422c66a-295d-4276-a662-392b6252ef27` | `404` | `404` | ✅ PASS |
+| 10 | Case 10: Update booking purpose (Success) | `PATCH` | `/bookings/066ccb6e-3e3e-4bb1-94db-abaa57300dae` | `200` | `200` | ✅ PASS |
+| 11 | Case 11: Update booking time to conflict with another booking (Conflict) | `PATCH` | `/bookings/3ddc84af-1a74-4746-b824-0f0b9d77ff16` | `409` | `409` | ✅ PASS |
+| 12 | Case 12: Delete booking by ID (Success) | `DELETE` | `/bookings/066ccb6e-3e3e-4bb1-94db-abaa57300dae` | `204` | `204` | ✅ PASS |
+| 13 | Case 13: Get deleted booking (Not Found) | `GET` | `/bookings/066ccb6e-3e3e-4bb1-94db-abaa57300dae` | `404` | `404` | ✅ PASS |
 
 ## Detailed Test Cases & Raw HTTP Evidence
 
 ### 1. Case 1: List all equipment
 **Request:**
 ```http
-GET http://127.0.0.1:8787/api/equipment
+GET https://campus-equipment-booking-api.siriwimonchst.workers.dev/api/equipment
 Content-Type: application/json
 
 (no body)
@@ -55,7 +55,7 @@ Content-Type: application/json
 ### 2. Case 2: Create a booking (Success)
 **Request:**
 ```http
-POST http://127.0.0.1:8787/api/bookings
+POST https://campus-equipment-booking-api.siriwimonchst.workers.dev/api/bookings
 Content-Type: application/json
 
 {
@@ -70,7 +70,7 @@ Content-Type: application/json
 **Response (HTTP 201):**
 ```json
 {
-  "id": "9422c66a-295d-4276-a662-392b6252ef27",
+  "id": "066ccb6e-3e3e-4bb1-94db-abaa57300dae",
   "equipmentId": "eq-1",
   "borrowerName": "Somchai Jaidee",
   "startAt": "2026-10-20T09:00:00.000Z",
@@ -84,7 +84,7 @@ Content-Type: application/json
 ### 3. Case 3: Create booking with overlapping time (Conflict)
 **Request:**
 ```http
-POST http://127.0.0.1:8787/api/bookings
+POST https://campus-equipment-booking-api.siriwimonchst.workers.dev/api/bookings
 Content-Type: application/json
 
 {
@@ -108,7 +108,7 @@ Content-Type: application/json
 ### 4. Case 4: Create booking with startAt after endAt (Validation Error)
 **Request:**
 ```http
-POST http://127.0.0.1:8787/api/bookings
+POST https://campus-equipment-booking-api.siriwimonchst.workers.dev/api/bookings
 Content-Type: application/json
 
 {
@@ -132,7 +132,7 @@ Content-Type: application/json
 ### 5. Case 5: Create booking with non-existent equipmentId (Bad Request)
 **Request:**
 ```http
-POST http://127.0.0.1:8787/api/bookings
+POST https://campus-equipment-booking-api.siriwimonchst.workers.dev/api/bookings
 Content-Type: application/json
 
 {
@@ -156,7 +156,7 @@ Content-Type: application/json
 ### 6. Case 6: Create second non-overlapping booking for eq-1 (Success)
 **Request:**
 ```http
-POST http://127.0.0.1:8787/api/bookings
+POST https://campus-equipment-booking-api.siriwimonchst.workers.dev/api/bookings
 Content-Type: application/json
 
 {
@@ -171,7 +171,7 @@ Content-Type: application/json
 **Response (HTTP 201):**
 ```json
 {
-  "id": "d8beb812-48f8-46f8-b4cd-6c718c0784f5",
+  "id": "3ddc84af-1a74-4746-b824-0f0b9d77ff16",
   "equipmentId": "eq-1",
   "borrowerName": "Mana Dee",
   "startAt": "2026-10-20T14:00:00.000Z",
@@ -185,7 +185,7 @@ Content-Type: application/json
 ### 7. Case 7: List all bookings
 **Request:**
 ```http
-GET http://127.0.0.1:8787/api/bookings
+GET https://campus-equipment-booking-api.siriwimonchst.workers.dev/api/bookings
 Content-Type: application/json
 
 (no body)
@@ -195,7 +195,7 @@ Content-Type: application/json
 ```json
 [
   {
-    "id": "9422c66a-295d-4276-a662-392b6252ef27",
+    "id": "066ccb6e-3e3e-4bb1-94db-abaa57300dae",
     "equipmentId": "eq-1",
     "borrowerName": "Somchai Jaidee",
     "startAt": "2026-10-20T09:00:00.000Z",
@@ -203,7 +203,7 @@ Content-Type: application/json
     "purpose": "Class presentation"
   },
   {
-    "id": "d8beb812-48f8-46f8-b4cd-6c718c0784f5",
+    "id": "3ddc84af-1a74-4746-b824-0f0b9d77ff16",
     "equipmentId": "eq-1",
     "borrowerName": "Mana Dee",
     "startAt": "2026-10-20T14:00:00.000Z",
@@ -215,10 +215,10 @@ Content-Type: application/json
 
 ---
 
-### 8. Case 8: Get booking by ID (9422c66a-295d-4276-a662-392b6252ef27)
+### 8. Case 8: Get booking by ID (066ccb6e-3e3e-4bb1-94db-abaa57300dae)
 **Request:**
 ```http
-GET http://127.0.0.1:8787/api/bookings/9422c66a-295d-4276-a662-392b6252ef27
+GET https://campus-equipment-booking-api.siriwimonchst.workers.dev/api/bookings/066ccb6e-3e3e-4bb1-94db-abaa57300dae
 Content-Type: application/json
 
 (no body)
@@ -227,7 +227,7 @@ Content-Type: application/json
 **Response (HTTP 200):**
 ```json
 {
-  "id": "9422c66a-295d-4276-a662-392b6252ef27",
+  "id": "066ccb6e-3e3e-4bb1-94db-abaa57300dae",
   "equipmentId": "eq-1",
   "borrowerName": "Somchai Jaidee",
   "startAt": "2026-10-20T09:00:00.000Z",
@@ -241,7 +241,7 @@ Content-Type: application/json
 ### 9. Case 9: Get booking with non-existent ID (Not Found)
 **Request:**
 ```http
-GET http://127.0.0.1:8787/api/bookings/non-existent-id
+GET https://campus-equipment-booking-api.siriwimonchst.workers.dev/api/bookings/non-existent-id
 Content-Type: application/json
 
 (no body)
@@ -259,7 +259,7 @@ Content-Type: application/json
 ### 10. Case 10: Update booking purpose (Success)
 **Request:**
 ```http
-PATCH http://127.0.0.1:8787/api/bookings/9422c66a-295d-4276-a662-392b6252ef27
+PATCH https://campus-equipment-booking-api.siriwimonchst.workers.dev/api/bookings/066ccb6e-3e3e-4bb1-94db-abaa57300dae
 Content-Type: application/json
 
 {
@@ -270,7 +270,7 @@ Content-Type: application/json
 **Response (HTTP 200):**
 ```json
 {
-  "id": "9422c66a-295d-4276-a662-392b6252ef27",
+  "id": "066ccb6e-3e3e-4bb1-94db-abaa57300dae",
   "equipmentId": "eq-1",
   "borrowerName": "Somchai Jaidee",
   "startAt": "2026-10-20T09:00:00.000Z",
@@ -284,7 +284,7 @@ Content-Type: application/json
 ### 11. Case 11: Update booking time to conflict with another booking (Conflict)
 **Request:**
 ```http
-PATCH http://127.0.0.1:8787/api/bookings/d8beb812-48f8-46f8-b4cd-6c718c0784f5
+PATCH https://campus-equipment-booking-api.siriwimonchst.workers.dev/api/bookings/3ddc84af-1a74-4746-b824-0f0b9d77ff16
 Content-Type: application/json
 
 {
@@ -305,7 +305,7 @@ Content-Type: application/json
 ### 12. Case 12: Delete booking by ID (Success)
 **Request:**
 ```http
-DELETE http://127.0.0.1:8787/api/bookings/9422c66a-295d-4276-a662-392b6252ef27
+DELETE https://campus-equipment-booking-api.siriwimonchst.workers.dev/api/bookings/066ccb6e-3e3e-4bb1-94db-abaa57300dae
 Content-Type: application/json
 
 (no body)
@@ -321,7 +321,7 @@ Content-Type: application/json
 ### 13. Case 13: Get deleted booking (Not Found)
 **Request:**
 ```http
-GET http://127.0.0.1:8787/api/bookings/9422c66a-295d-4276-a662-392b6252ef27
+GET https://campus-equipment-booking-api.siriwimonchst.workers.dev/api/bookings/066ccb6e-3e3e-4bb1-94db-abaa57300dae
 Content-Type: application/json
 
 (no body)

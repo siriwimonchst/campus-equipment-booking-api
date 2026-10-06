@@ -1,6 +1,6 @@
 import fs from 'node:fs'
 
-const BASE_URL = 'http://127.0.0.1:8787/api'
+const BASE_URL = 'https://campus-equipment-booking-api.siriwimonchst.workers.dev/api'
 
 async function run() {
   const cases = []
