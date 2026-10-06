@@ -3,7 +3,22 @@
 **Base API URL**: `https://campus-equipment-booking-api.siriwimonchst.workers.dev/api`  
 **Test Date**: 2026-10-06T07:22:46.197Z  
 **Total Test Cases**: 13  
-**Passed**: 13 / 13
+**Passed**: 13 / 13 (100% Passed)
+
+---
+
+## 📸 Visual Verification Evidence (ภาพถ่ายหลักฐานการใช้งานจริง)
+
+### 1. Live Production API Response in Browser
+หลักฐานการเข้าถึง Endpoint `GET /api/equipment` บน Cloudflare Workers จริงผ่าน Web Browser ยืนยันว่าระบบออนไลน์และตอบกลับเป็น JSON พร้อมข้อมูลอุปกรณ์ตั้งต้น:
+
+![Live Equipment Browser Evidence](./screenshots/01_live_equipment_browser.png)
+
+### 2. Live Automated End-to-End Test Suite Execution
+หลักฐานการรันชุดทดสอบ End-to-End 13 กรณี ครอบคลุม CRUD, Overlap Conflict (409), Validation (400), และ Not Found (404) ด้วย Node Test Runner:
+- ผลลัพธ์: **13 / 13 Test Cases ผ่านทั้งหมด (All Passed: true)**
+
+---
 
 ## Summary of Test Results
 
