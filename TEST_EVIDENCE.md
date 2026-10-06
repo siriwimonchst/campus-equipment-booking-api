@@ -7,16 +7,16 @@
 
 ---
 
-## 📸 Visual Verification Evidence (ภาพถ่ายหลักฐานการใช้งานจริง)
+## 📸 Visual Verification Evidence
 
 ### 1. Live Production API Response in Browser
-หลักฐานการเข้าถึง Endpoint `GET /api/equipment` บน Cloudflare Workers จริงผ่าน Web Browser ยืนยันว่าระบบออนไลน์และตอบกลับเป็น JSON พร้อมข้อมูลอุปกรณ์ตั้งต้น:
+Proof of accessing the `GET /api/equipment` endpoint on live Cloudflare Workers via web browser, verifying that the service is online and returning initialized equipment JSON data:
 
 ![Live Equipment Browser Evidence](./screenshots/01_live_equipment_browser.png)
 
 ### 2. Live Automated End-to-End Test Suite Execution
-หลักฐานการรันชุดทดสอบ End-to-End ครอบคลุม CRUD, Overlap Conflict (409), Validation (400), และ Not Found (404) ตาม cURL Quick Test Guide ทั้งหมด:
-- ผลลัพธ์: **13 / 13 Test Cases ผ่านทั้งหมด (All Passed: true)**
+Proof of executing the end-to-end test suite covering CRUD, Overlap Conflict (409), Validation (400), and Not Found (404) matching all cURL Quick Test Guide specifications:
+- Result: **13 / 13 Test Cases Passed (All Passed: true)**
 
 ![cURL Guide 9 Steps Execution Evidence](./screenshots/02_curl_guide_9_steps.png)
 
