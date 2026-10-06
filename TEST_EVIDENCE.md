@@ -15,8 +15,10 @@
 ![Live Equipment Browser Evidence](./screenshots/01_live_equipment_browser.png)
 
 ### 2. Live Automated End-to-End Test Suite Execution
-หลักฐานการรันชุดทดสอบ End-to-End 13 กรณี ครอบคลุม CRUD, Overlap Conflict (409), Validation (400), และ Not Found (404) ด้วย Node Test Runner:
+หลักฐานการรันชุดทดสอบ End-to-End ครอบคลุม CRUD, Overlap Conflict (409), Validation (400), และ Not Found (404) ตาม cURL Quick Test Guide ทั้งหมด:
 - ผลลัพธ์: **13 / 13 Test Cases ผ่านทั้งหมด (All Passed: true)**
+
+![cURL Guide 9 Steps Execution Evidence](./screenshots/02_curl_guide_9_steps.png)
 
 ---
 
